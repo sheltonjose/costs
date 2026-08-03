@@ -1,6 +1,16 @@
 {
   "projects": [
-    
+    {
+      "category": {
+        "id": "3",
+        "name": "Design"
+      },
+      "budget": "222",
+      "name": "asad",
+      "cost": 0,
+      "service": [],
+      "id": "zMPwB0Lbjnc"
+    }
   ],
   "categories": [
     {
@@ -19,5 +29,6 @@
       "id": "4",
       "name": "Planeamento"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
