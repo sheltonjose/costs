@@ -7,6 +7,13 @@ function NewProject(){
     const navigate = useNavigate()
     function createPost(project){
         //initialize cost and services
+
+        /*if(!project.name || project.name.trim()===""){
+            console.log("campos vazios dawg")
+            return;
+        }*/
+
+
         project.cost = 0
         project.service = []
 
