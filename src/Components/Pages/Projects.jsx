@@ -1,11 +1,14 @@
-import {useLocation} from 'react-router-dom'
+import {data, useLocation} from 'react-router-dom'
 import Message from "../Layout/Message"
 import Container from '../Layout/Container'
 import LinkButton from '../Layout/LinkButton'
+import ProjectCard from '../Project/ProjectCard'
 
 import styles from './Projects.module.css'
+import { useState, useEffect} from 'react'
 
 function Projects(){
+    const [projects,setProjects] = useState([])
 
     const location =  useLocation()
     let message= ''
@@ -13,6 +16,22 @@ function Projects(){
     if(location.state){
         message = location.state.message
     }
+
+    useEffect(()=>{
+        fetch('http://localhost:5000/projects',{
+                method:'GET',
+                headers:{
+                    'Content-Type':'application,json',
+                },
+        }
+            
+        ).then(resp=> resp.json()).then(data=>{
+            console.log(data)
+            setProjects(data)
+        }).catch(err=>console.log(err))
+
+    },[])
+
     //pagina que exige todos projectos cadastrados
     return (
         <div className={styles.project_container}>
@@ -21,8 +40,19 @@ function Projects(){
                  <LinkButton to="/newproject" text="criar projecto"/>
            </div>
            {message && <Message type="sucess" msg={message} />}
+
            <Container customClass="start">
-                <p>Projectos...</p>
+                {projects.length > 0 && 
+                    projects.map((project)=>(
+                        <ProjectCard 
+                        key={project.id}
+                        id={project.id}
+                        name={project.name}
+                        budget={project.budget}
+                        category={ project.category.name}
+                       />
+                    ))
+                }
 
            </Container>
         </div>
