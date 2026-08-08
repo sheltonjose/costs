@@ -1,14 +1,18 @@
 import {data, useLocation} from 'react-router-dom'
 import Message from "../Layout/Message"
 import Container from '../Layout/Container'
+import Loading from '../Layout/Loading'
 import LinkButton from '../Layout/LinkButton'
 import ProjectCard from '../Project/ProjectCard'
 
 import styles from './Projects.module.css'
 import { useState, useEffect} from 'react'
 
+
 function Projects(){
     const [projects,setProjects] = useState([])
+    const [removeLoading, setRemoveLoading]= useState(false)
+    const [projectMessage, setProjectMessage]=useState('')
 
     const location =  useLocation()
     let message= ''
@@ -18,19 +22,37 @@ function Projects(){
     }
 
     useEffect(()=>{
-        fetch('http://localhost:5000/projects',{
-                method:'GET',
-                headers:{
+        setTimeout(
+        ()=>{
+          fetch('http://localhost:5000/projects',{
+          method:'GET',
+           headers:{
                     'Content-Type':'application,json',
                 },
-        }
-            
+        }   
         ).then(resp=> resp.json()).then(data=>{
             console.log(data)
             setProjects(data)
+            setRemoveLoading(true)
         }).catch(err=>console.log(err))
 
+        },200)
     },[])
+
+    function removeProject(id){
+        fetch(`http://localhost:5000/projects/${id}`,{
+            method:'DELETE',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+        }).then(resp=>resp.json()).then(
+            ()=>{
+                setProjects(projects.filter((project)=>project.id !==id))
+                setProjectMessage('Projecto removido com sucesso!')
+            }
+        ).catch(err=>console.log(err))
+
+    }
 
     //pagina que exige todos projectos cadastrados
     return (
@@ -40,6 +62,7 @@ function Projects(){
                  <LinkButton to="/newproject" text="criar projecto"/>
            </div>
            {message && <Message type="sucess" msg={message} />}
+            {projectMessage && <Message type="sucess" msg={projectMessage} />}
 
            <Container customClass="start">
                 {projects.length > 0 && 
@@ -50,10 +73,15 @@ function Projects(){
                         name={project.name}
                         budget={project.budget}
                         category={ project.category.name}
+                        handleRemove={removeProject}
                        />
                     ))
                 }
-
+                {!removeLoading && <Loading/>}
+                {removeLoading && projects.length===0  &&(
+                    <p>Não há projectos cadastrados!</p>
+                )
+                }
            </Container>
         </div>
     )
