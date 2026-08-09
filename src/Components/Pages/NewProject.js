@@ -12,8 +12,6 @@ function NewProject(){
             console.log("campos vazios dawg")
             return;
         }*/
-
-
         project.cost = 0
         project.service = []
 
