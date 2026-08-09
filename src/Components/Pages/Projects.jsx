@@ -1,4 +1,4 @@
-import {data, useLocation} from 'react-router-dom'
+import {useLocation} from 'react-router-dom'
 import Message from "../Layout/Message"
 import Container from '../Layout/Container'
 import Loading from '../Layout/Loading'
