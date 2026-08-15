@@ -11,6 +11,12 @@ function ServiceForm({handleSubmit, Btntext, projectData}){
 
     function submit(e){
         e.preventDefault()
+
+        if(!projectData.services){
+            projectData.services=[]
+        }
+      // projectData.services = projectData.services||[]
+
         projectData.services.push(service) //posso ter mais de um serviço por projecto
         handleSubmit(projectData)
     }
