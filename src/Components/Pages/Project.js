@@ -64,7 +64,8 @@ function Project(){
     }
 
     function createService(project){
-
+        setMessage('')
+      
         //last service 
         const lastService= project.services[project.services.length-1]
 
@@ -81,6 +82,21 @@ function Project(){
             project.services.pop()
             return false
         }
+
+        //add service cost to project total cost
+        project.cost = newCost
+        
+        //update project
+        fetch(`http://localhost:5000/projects/${project.id}`,{
+            method:'PATCH',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(project)
+        }).then((resp)=>resp.json()).then((data)=>{
+            //exibir os serviços
+            console.log(data)
+        }).catch(err=>console.log(err))
 
     }
 
