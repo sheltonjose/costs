@@ -18,9 +18,23 @@
         "id": "3",
         "name": "Design"
       },
-      "cost": 0,
+      "cost": 242,
       "service": [],
-      "id": "QIQbKHmJolY"
+      "id": "QIQbKHmJolY",
+      "services": [
+        {
+          "name": "Meu novo serviço",
+          "cost": "121",
+          "description": "faz isso aqui ",
+          "id": "fd51c1a7-bd53-4677-843a-8052a328f72e"
+        },
+        {
+          "name": "Meu novo serviço2",
+          "cost": "121",
+          "description": "faz isso aqui ",
+          "id": "5dac1626-1b49-49fd-a448-73ee959f6711"
+        }
+      ]
     },
     {
       "name": "projecto sustenta",
@@ -62,6 +76,5 @@
       "id": "4",
       "name": "Planeamento"
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }
