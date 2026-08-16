@@ -44,7 +44,7 @@
         "name": "Planeamento"
       },
       "cost": 0,
-      "service": [],
+      "services": [],
       "id": "U9wDfwo3SG4"
     },
     {
@@ -55,7 +55,7 @@
         "name": "Infra"
       },
       "cost": 0,
-      "service": [],
+      "services": [],
       "id": "nenDsM7UJR4"
     }
   ],
