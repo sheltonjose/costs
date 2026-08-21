@@ -18,7 +18,7 @@
         "id": "3",
         "name": "Design"
       },
-      "cost": 242,
+      "cost": 121,
       "service": [],
       "id": "QIQbKHmJolY",
       "services": [
@@ -27,12 +27,6 @@
           "cost": "121",
           "description": "faz isso aqui ",
           "id": "fd51c1a7-bd53-4677-843a-8052a328f72e"
-        },
-        {
-          "name": "Meu novo serviço2",
-          "cost": "121",
-          "description": "faz isso aqui ",
-          "id": "5dac1626-1b49-49fd-a448-73ee959f6711"
         }
       ]
     },
@@ -67,8 +61,15 @@
         "id": "1",
         "name": "Infra"
       },
-      "cost": 0,
-      "services": [],
+      "cost": 112,
+      "services": [
+        {
+          "name": "Generic H2 (Embedded)",
+          "cost": "112",
+          "description": "asass",
+          "id": "a7e831f0-645e-40b7-b516-bb735ff27122"
+        }
+      ],
       "id": "nenDsM7UJR4"
     }
   ],
