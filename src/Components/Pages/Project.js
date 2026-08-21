@@ -113,7 +113,7 @@ function Project(){
         projectUpdated.services = servicesUpdated
         projectUpdated.cost = parseFloat(projectUpdated.cost) - parseFloat(cost)
 
-        fetch(`http://localhost:5000/prohects/${projectUpdated.id}`,{
+        fetch(`http://localhost:5000/projects/${projectUpdated.id}`,{
             method:'PATCH',
             headers:{
                 'Content-Type' : 'application/json'
